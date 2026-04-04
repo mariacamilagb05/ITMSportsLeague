@@ -11,6 +11,11 @@ namespace SportsLeague.DataAccess.Context
 
         public DbSet<Team> Teams => Set<Team>();
         public DbSet<Player> Players => Set<Player>();
+        public DbSet<Referee> Referees => Set<Referee>();
+
+        public DbSet<Tournament> Tournaments => Set<Tournament>();
+
+        public DbSet<TournamentTeam> TournamentTeams => Set<TournamentTeam>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -69,6 +74,7 @@ namespace SportsLeague.DataAccess.Context
                 entity.HasIndex(p => new { p.TeamId, p.Number })
                       .IsUnique();
             });
+
 
         }
     }
