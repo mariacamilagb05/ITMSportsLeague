@@ -152,6 +152,57 @@ namespace SportsLeague.DataAccess.Context
                 .IsRequired(false);
 
             });
+
+            // ── TournamentTeam Configuration ──
+
+            modelBuilder.Entity<TournamentTeam>(entity =>
+
+            {
+
+                entity.HasKey(tt => tt.Id);
+
+                entity.Property(tt => tt.RegisteredAt)
+
+                .IsRequired();
+
+                entity.Property(tt => tt.CreatedAt)
+
+                .IsRequired();
+
+                entity.Property(tt => tt.UpdatedAt)
+
+                .IsRequired(false);
+
+
+                // Relación con Tournament
+
+                entity.HasOne(tt => tt.Tournament)
+
+                .WithMany(t => t.TournamentTeams)
+
+                .HasForeignKey(tt => tt.TournamentId)
+
+                .OnDelete(DeleteBehavior.Cascade);
+
+
+                // Relación con Team
+
+                entity.HasOne(tt => tt.Team)
+
+                .WithMany(t => t.TournamentTeams)
+
+                .HasForeignKey(tt => tt.TeamId)
+
+                .OnDelete(DeleteBehavior.Cascade);
+
+
+                // Índice único compuesto: un equipo solo una vez por torneo
+
+                entity.HasIndex(tt => new { tt.TournamentId, tt.TeamId })
+
+                .IsUnique();
+
+            });
         }
     }
 }
