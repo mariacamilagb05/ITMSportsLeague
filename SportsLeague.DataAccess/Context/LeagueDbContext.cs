@@ -75,7 +75,41 @@ namespace SportsLeague.DataAccess.Context
                       .IsUnique();
             });
 
+            // ── Referee Configuration ──
 
+            modelBuilder.Entity<Referee>(entity =>
+
+            {
+
+                entity.HasKey(r => r.Id);
+
+                entity.Property(r => r.FirstName)
+
+                .IsRequired()
+
+                .HasMaxLength(80);
+
+                entity.Property(r => r.LastName)
+
+                .IsRequired()
+
+                .HasMaxLength(80);
+
+                entity.Property(r => r.Nationality)
+
+                .IsRequired()
+
+                .HasMaxLength(80);
+
+                entity.Property(r => r.CreatedAt)
+
+                .IsRequired();
+
+                entity.Property(r => r.UpdatedAt)
+
+                .IsRequired(false);
+
+            });
         }
     }
 }
