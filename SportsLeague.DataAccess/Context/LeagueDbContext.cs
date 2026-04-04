@@ -110,6 +110,48 @@ namespace SportsLeague.DataAccess.Context
                 .IsRequired(false);
 
             });
+
+            // ── Tournament Configuration ──
+
+            modelBuilder.Entity<Tournament>(entity =>
+
+            {
+
+                entity.HasKey(t => t.Id);
+
+                entity.Property(t => t.Name)
+
+                .IsRequired()
+
+                .HasMaxLength(150);
+
+                entity.Property(t => t.Season)
+
+                .IsRequired()
+
+                .HasMaxLength(20);
+
+                entity.Property(t => t.StartDate)
+
+                .IsRequired();
+
+                entity.Property(t => t.EndDate)
+
+                .IsRequired();
+
+                entity.Property(t => t.Status)
+
+                .IsRequired();
+
+                entity.Property(t => t.CreatedAt)
+
+                .IsRequired();
+
+                entity.Property(t => t.UpdatedAt)
+
+                .IsRequired(false);
+
+            });
         }
     }
 }
