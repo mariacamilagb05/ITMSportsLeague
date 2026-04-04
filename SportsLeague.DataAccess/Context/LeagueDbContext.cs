@@ -12,10 +12,10 @@ namespace SportsLeague.DataAccess.Context
         public DbSet<Team> Teams => Set<Team>();
         public DbSet<Player> Players => Set<Player>();
         public DbSet<Referee> Referees => Set<Referee>();
-
         public DbSet<Tournament> Tournaments => Set<Tournament>();
-
         public DbSet<TournamentTeam> TournamentTeams => Set<TournamentTeam>();
+        public DbSet<Sponsor> Sponsors => Set<Sponsor>();
+        public DbSet<TournamentSponsor> TournamentSponsors => Set<TournamentSponsor>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
