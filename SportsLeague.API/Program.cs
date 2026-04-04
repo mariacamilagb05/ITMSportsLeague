@@ -23,6 +23,9 @@ builder.Services.AddScoped<ITournamentTeamRepository, TournamentTeamRepository>(
 // ── Services ──
 builder.Services.AddScoped<ITeamService, TeamService>();
 builder.Services.AddScoped<IPlayerService, PlayerService>();
+builder.Services.AddScoped<IRefereeService, RefereeService>();
+
+builder.Services.AddScoped<ITournamentService, TournamentService>();
 
 // ── AutoMapper ──
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
