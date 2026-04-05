@@ -10,7 +10,7 @@ namespace SportsLeague.API.DTOs.Response
         public string? Phone { get; set; }
         public string? WebsiteUrl { get; set; }
         public SponsorCategory Category { get; set; }
-        public int TeamsCount { get; set; }
+        public int TournamentsCount { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
     }
