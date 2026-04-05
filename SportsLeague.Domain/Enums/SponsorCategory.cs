@@ -2,10 +2,10 @@
 {
     public enum SponsorCategory
     {
-        Unknown = -1,  // Desconocido o no especificado
-        Main = 0,      // Patrocinador principal
-        Gold = 1,      // Oro
-        Silver = 2,    // Plata
-        Bronze = 3     // Bronce
+        Unknown = 0,  // Desconocido o no especificado
+        Main = 1,      // Patrocinador principal
+        Gold = 2,      // Oro
+        Silver = 3,    // Plata
+        Bronze = 4     // Bronce
     }
 }
