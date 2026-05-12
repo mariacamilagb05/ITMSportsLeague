@@ -11,6 +11,8 @@
         // Navigation Property - Colección de jugadores
         public ICollection<Player> Players { get; set; } = new List<Player>();
         public ICollection<TournamentTeam> TournamentTeams { get; set; } = new List<TournamentTeam>();
+        public ICollection<Match> HomeMatches { get; set; } = new List<Match>(); // Partidos como local
+        public ICollection<Match> AwayMatches { get; set; } = new List<Match>(); // Partidos como visitante
 
     }
 }
