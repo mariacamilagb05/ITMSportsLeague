@@ -2,11 +2,9 @@
 
 namespace SportsLeague.API.DTOs.Request
 {
-    public class UpdateStatusDTO
-
+    public class UpdateMatchStatusDTO
     {
-
-        public TournamentStatus Status { get; set; }
-
+        public MatchStatus Status { get; set; }
     }
+
 }
