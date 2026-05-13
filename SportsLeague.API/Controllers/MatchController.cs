@@ -23,8 +23,7 @@ namespace SportsLeague.API.Controllers
         }
 
         [HttpGet("tournament/{tournamentId}")]
-        public async Task<ActionResult<IEnumerable<MatchResponseDTO>>> GetByTournament(
-            int tournamentId)
+        public async Task<ActionResult<IEnumerable<MatchResponseDTO>>> GetByTournament(int tournamentId)
         {
             try
             {
@@ -43,6 +42,7 @@ namespace SportsLeague.API.Controllers
             var match = await _matchService.GetByIdAsync(id);
             if (match == null)
                 return NotFound(new { message = $"Partido con ID {id} no encontrado" });
+            
             return Ok(_mapper.Map<MatchResponseDTO>(match));
         }
 
@@ -76,8 +76,14 @@ namespace SportsLeague.API.Controllers
                 await _matchService.UpdateAsync(id, match);
                 return NoContent();
             }
-            catch (KeyNotFoundException ex) { return NotFound(new { message = ex.Message }); }
-            catch (InvalidOperationException ex) { return Conflict(new { message = ex.Message }); }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { message = ex.Message }); 
+            }
+            catch (InvalidOperationException ex) 
+            { 
+                return Conflict(new { message = ex.Message });
+            }
         }
 
         [HttpDelete("{id}")]
@@ -88,8 +94,14 @@ namespace SportsLeague.API.Controllers
                 await _matchService.DeleteAsync(id);
                 return NoContent();
             }
-            catch (KeyNotFoundException ex) { return NotFound(new { message = ex.Message }); }
-            catch (InvalidOperationException ex) { return Conflict(new { message = ex.Message }); }
+            catch (KeyNotFoundException ex)
+            { 
+                return NotFound(new { message = ex.Message }); 
+            }
+            catch (InvalidOperationException ex) 
+            { 
+                return Conflict(new { message = ex.Message }); 
+            }
         }
 
         [HttpPatch("{id}/status")]
@@ -100,8 +112,14 @@ namespace SportsLeague.API.Controllers
                 await _matchService.UpdateStatusAsync(id, dto.Status);
                 return NoContent();
             }
-            catch (KeyNotFoundException ex) { return NotFound(new { message = ex.Message }); }
-            catch (InvalidOperationException ex) { return Conflict(new { message = ex.Message }); }
+            catch (KeyNotFoundException ex) 
+            { 
+                return NotFound(new { message = ex.Message }); 
+            }
+            catch (InvalidOperationException ex) 
+            { 
+                return Conflict(new { message = ex.Message }); 
+            }
         }
     }
 
