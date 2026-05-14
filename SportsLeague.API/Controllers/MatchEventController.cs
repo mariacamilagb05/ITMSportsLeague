@@ -82,8 +82,14 @@ namespace SportsLeague.API.Controllers
         [HttpDelete("goals/{goalId}")]
         public async Task<ActionResult> DeleteGoal(int matchId, int goalId)
         {
-            try { await _matchEventService.DeleteGoalAsync(goalId); return NoContent(); }
-            catch (KeyNotFoundException ex) { return NotFound(new { message = ex.Message }); }
+            try
+            { 
+                await _matchEventService.DeleteGoalAsync(goalId); return NoContent(); 
+            }
+            catch (KeyNotFoundException ex) 
+            { 
+                return NotFound(new { message = ex.Message }); 
+            }
         }
 
         // ═══ Cards ═══
