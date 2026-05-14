@@ -274,6 +274,25 @@ namespace SportsLeague.DataAccess.Context
                 entity.HasIndex(mr => mr.MatchId).IsUnique();
             });
 
+            // ── Goal Configuration ──
+            modelBuilder.Entity<Goal>(entity =>
+            {
+                entity.HasKey(g => g.Id);
+                entity.Property(g => g.Minute).IsRequired();
+                entity.Property(g => g.Type).IsRequired();
+                entity.Property(g => g.CreatedAt).IsRequired();
+                entity.Property(g => g.UpdatedAt).IsRequired(false);
+
+                entity.HasOne(g => g.Match)
+                      .WithMany(m => m.Goals)
+                      .HasForeignKey(g => g.MatchId)
+                      .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasOne(g => g.Player)
+                      .WithMany(p => p.Goals)
+                      .HasForeignKey(g => g.PlayerId)
+                      .OnDelete(DeleteBehavior.Restrict);
+            });
 
         }
     }
