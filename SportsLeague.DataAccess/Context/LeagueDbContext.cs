@@ -294,6 +294,26 @@ namespace SportsLeague.DataAccess.Context
                       .OnDelete(DeleteBehavior.Restrict);
             });
 
+            // ── Card Configuration ──
+            modelBuilder.Entity<Card>(entity =>
+            {
+                entity.HasKey(c => c.Id);
+                entity.Property(c => c.Minute).IsRequired();
+                entity.Property(c => c.Type).IsRequired();
+                entity.Property(c => c.CreatedAt).IsRequired();
+                entity.Property(c => c.UpdatedAt).IsRequired(false);
+
+                entity.HasOne(c => c.Match)
+                      .WithMany(m => m.Cards)
+                      .HasForeignKey(c => c.MatchId)
+                      .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasOne(c => c.Player)
+                      .WithMany(p => p.Cards)
+                      .HasForeignKey(c => c.PlayerId)
+                      .OnDelete(DeleteBehavior.Restrict);
+            });
+
         }
     }
 }
