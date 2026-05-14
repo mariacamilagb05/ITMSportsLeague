@@ -17,6 +17,9 @@ namespace SportsLeague.DataAccess.Context
         public DbSet<Sponsor> Sponsors => Set<Sponsor>();
         public DbSet<TournamentSponsor> TournamentSponsors => Set<TournamentSponsor>();
         public DbSet<Match> Matches => Set<Match>();
+        public DbSet<MatchResult> MatchResults => Set<MatchResult>();
+        public DbSet<Goal> Goals => Set<Goal>();
+        public DbSet<Card> Cards => Set<Card>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
